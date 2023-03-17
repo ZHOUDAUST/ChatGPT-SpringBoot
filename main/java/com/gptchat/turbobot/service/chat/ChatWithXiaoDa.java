@@ -11,6 +11,8 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,8 @@ import java.util.List;
 @Service
 @Slf4j
 public class ChatWithXiaoDa {
+
+    private static final Logger logger = LoggerFactory.getLogger(ChatWithXiaoDa.class);
 
     private static final String error_msg = "嗯？我是一个人工智能模型，对于这个问题我无法给出准确的答案";
 
@@ -67,10 +71,10 @@ public class ChatWithXiaoDa {
             response = httpClient.execute(httpPost);
             resultString = EntityUtils.toString(response.getEntity(), "utf-8");
             if (JSONUtil.parseObj(resultString).containsKey("error")) {
-                log.info("resp--------------/n" + resultString);
+                logger.error("resp--------------/n" + resultString);
                 return error_msg;
             }
-            log.info("resp--------------/n" + resultString);
+            logger.debug("resp--------------/n" + resultString);
             resultString = JSONUtil.parseObj(JSONUtil.parseObj(JSONUtil.parseArray(JSONUtil.parseObj(resultString)
                     .get("choices"))
                     .get(0))
