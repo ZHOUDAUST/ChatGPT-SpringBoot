@@ -6,6 +6,7 @@ server:
 
 chatgpt:
   api: "https://api.openai.com/v1/chat/completions"
-  skey: "2eaQrVip0Bi0jcHxMVB6eOZI3uvfJKLCO7w6xIxdJIbBlfAdMGjni6tA1nIkmDhLq3eDkY1aJ+ntF+3yrmajgja7vKIpBOgviB4="
+#  替换成你自己的Bearer $OPENAI_API_KEY，用代码里的EncryptUtil加密
+  skey: "your_key"
   model: "gpt-3.5-turbo"
 
