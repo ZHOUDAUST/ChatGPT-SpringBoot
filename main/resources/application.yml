@@ -9,4 +9,9 @@ chatgpt:
 #  替换成你自己的Bearer $OPENAI_API_KEY，用代码里的EncryptUtil加密
   skey: "your_key"
   model: "gpt-3.5-turbo"
+  
+logging:
+  config: classpath:Spring-logback.xml
+  level:
+    com.gptchat.turbobot: trace
 
